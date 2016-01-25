@@ -3,7 +3,7 @@
 module.exports = function (config) {
     config.set({
         frameworks:['jasmine'],
-        browsers:['Chrome'],
+        browsers:['PhantomJS'],
         files:[
             'specs/unit/*.js'
         ]
