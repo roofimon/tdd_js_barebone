@@ -1,29 +1,38 @@
 'use strict';
 describe('Tennis Rules', function() {
+    var counter;
+    var rule;
+    beforeEach( function() {
+        counter = new Counter();
+        rule = new TennisRule();
+    });
+
     describe('Start Game', function(){
         it('announce Start Game when both score is 0', function() {
-            var counter = new Counter();
-            var rule = new TennisRule();
-
-            var score = rule.announce(counter);
-            expect(score).toBe("Start Game");
+            expect(rule.announce(counter)).toBe("Start Game");
         });
     });
+    
     describe('End Game', function(){
         it('should announce PlayerA win when Player A has 2 point than Player B and both score less than 4', function(){
-            var counter = new Counter();
-            counter.scoreToB();
-            counter.scoreToA();
-            counter.scoreToA();
-            counter.scoreToA();
-            counter.scoreToA();
-            var rule = new TennisRule();
+            setScoreTo('B', 1);
+            setScoreTo('A', 4);
 
             expect(rule.announce(counter)).toBe("Player A Win");
         });
     });
 
-
+    var setScoreTo = function(player, score) {
+        if(player == 'A') {
+            for(var i = 1; i <= score; i++) {
+                counter.scoreToA();
+            }
+        }else{
+            for(var i = 1; i <= score; i++) {
+                counter.scoreToB();
+            }
+        }
+    };
 });
 
 describe('Counter', function() {
