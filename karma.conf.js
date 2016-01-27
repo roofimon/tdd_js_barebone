@@ -5,6 +5,8 @@ module.exports = function (config) {
         frameworks:['jasmine'],
         browsers:['PhantomJS'],
         files:[
+            'tennisRules.js',
+            'counter.js',
             'specs/unit/*.js'
         ]
     });
