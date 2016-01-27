@@ -12,13 +12,20 @@ describe('Tennis Rules', function() {
             expect(rule.announce(counter)).toBe("Start Game");
         });
     });
-    
+
     describe('End Game', function(){
-        it('should announce PlayerA win when Player A has 2 point than Player B and both score less than 4', function(){
-            setScoreTo('B', 1);
+        it('should announce PlayerA win when Player A has 2 point than Player B and Player B score less than 3', function(){
             setScoreTo('A', 4);
+            setScoreTo('B', 1);
 
             expect(rule.announce(counter)).toBe("Player A Win");
+        });
+
+        it('should annouce PlayerB win when Player A has 2 point than Player A and both score less than 4', function() {
+            setScoreTo('A', 1);
+            setScoreTo('B', 4);
+
+            expect(rule.announce(counter)).toBe("Player B Win");
         });
     });
 
