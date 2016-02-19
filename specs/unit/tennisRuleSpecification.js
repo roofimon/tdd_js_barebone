@@ -13,6 +13,14 @@ describe('Tennis Rules', function() {
 				});
 			});
 
+		describe('Deuce', function() {
+			it('announce deuce when both score is 4', function(){
+				setScoreTo('A', 4);
+				setScoreTo('B', 4);
+				expect(rule.announce(counter)).toBe("Deuce");
+			});
+		});
+
 		describe('End Game', function(){
 			it('should announce PlayerA win when Player A has 2 point than Player B and Player B score less than 3', function(){
 				setScoreTo('A', 4);
